@@ -16,6 +16,9 @@
 		CA4C47E2174BFC500012A162 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4C47E1174BFC500012A162 /* User.m */; };
 		CA4C47E4174BFC860012A162 /* RespondsToSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = CA4C47E3174BFC860012A162 /* RespondsToSpec.mm */; };
 		CA4C47E6174BFEF50012A162 /* ConformsToSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = CA4C47E5174BFEF50012A162 /* ConformsToSpec.mm */; };
+		CA4C47EB174C05700012A162 /* GroupRunnerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = CA4C47EA174C05700012A162 /* GroupRunnerSpec.mm */; };
+		CA4C47EE174C05B60012A162 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4C47ED174C05B60012A162 /* Group.m */; };
+		CA4C47F0174C0D130012A162 /* UserRunnerSpecSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = CA4C47EF174C0D130012A162 /* UserRunnerSpecSpec.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,11 @@
 		CA4C47E3174BFC860012A162 /* RespondsToSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RespondsToSpec.mm; sourceTree = "<group>"; };
 		CA4C47E5174BFEF50012A162 /* ConformsToSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ConformsToSpec.mm; sourceTree = "<group>"; };
 		CA4C47E7174BFF850012A162 /* Conformable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Conformable.h; sourceTree = "<group>"; };
+		CA4C47E9174C02AD0012A162 /* Runner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Runner.h; sourceTree = "<group>"; };
+		CA4C47EA174C05700012A162 /* GroupRunnerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroupRunnerSpec.mm; sourceTree = "<group>"; };
+		CA4C47EC174C05B60012A162 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		CA4C47ED174C05B60012A162 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		CA4C47EF174C0D130012A162 /* UserRunnerSpecSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UserRunnerSpecSpec.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,8 @@
 			children = (
 				CA4C47E3174BFC860012A162 /* RespondsToSpec.mm */,
 				CA4C47E5174BFEF50012A162 /* ConformsToSpec.mm */,
+				CA4C47EA174C05700012A162 /* GroupRunnerSpec.mm */,
+				CA4C47EF174C0D130012A162 /* UserRunnerSpecSpec.mm */,
 			);
 			path = Specs;
 			sourceTree = "<group>";
@@ -116,6 +126,7 @@
 		CA4C47DA174BFAA60012A162 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CA4C47E8174C02630012A162 /* Runner */,
 				CA4C47DB174BFB590012A162 /* Matchers */,
 			);
 			path = Core;
@@ -136,8 +147,18 @@
 				CA4C47E7174BFF850012A162 /* Conformable.h */,
 				CA4C47E0174BFC500012A162 /* User.h */,
 				CA4C47E1174BFC500012A162 /* User.m */,
+				CA4C47EC174C05B60012A162 /* Group.h */,
+				CA4C47ED174C05B60012A162 /* Group.m */,
 			);
 			path = TestUnits;
+			sourceTree = "<group>";
+		};
+		CA4C47E8174C02630012A162 /* Runner */ = {
+			isa = PBXGroup;
+			children = (
+				CA4C47E9174C02AD0012A162 /* Runner.h */,
+			);
+			path = Runner;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +261,9 @@
 				CA4C47E2174BFC500012A162 /* User.m in Sources */,
 				CA4C47E4174BFC860012A162 /* RespondsToSpec.mm in Sources */,
 				CA4C47E6174BFEF50012A162 /* ConformsToSpec.mm in Sources */,
+				CA4C47EB174C05700012A162 /* GroupRunnerSpec.mm in Sources */,
+				CA4C47EE174C05B60012A162 /* Group.m in Sources */,
+				CA4C47F0174C0D130012A162 /* UserRunnerSpecSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
