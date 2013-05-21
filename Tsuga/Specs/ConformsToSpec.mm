@@ -1,4 +1,4 @@
-#import "TSConformsTo.h"
+#import "Tsuga.h"
 
 #import "User.h"
 
@@ -39,6 +39,35 @@ describe(@"ConformsTo", ^{
         it(@"name", ^{
             subject should conforms_to(@"Conformable");
         });
+    });
+    
+    context(@"helpers", ^{
+        
+        context(@"class", ^{
+            subject([User class]);
+           
+            it(@"protocol", ^{
+                subject() should conforms_to(@protocol(Conformable));
+            });
+            
+            it(@"name", ^{
+                subject() should conforms_to(@"Conformable");
+            });
+            
+        });
+        
+        context(@"instance", ^{
+            subject([User new]);
+            
+            it(@"protocol", ^{
+                subject() should conforms_to(@protocol(Conformable));
+            });
+            
+            it(@"name", ^{
+                subject() should conforms_to(@"Conformable");
+            });
+        });
+        
     });
     
 });

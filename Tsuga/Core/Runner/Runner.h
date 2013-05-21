@@ -11,10 +11,12 @@
 #define CDR_EXT static int _tsuga = 
 
 typedef void (^SpecBlock) ();
+static id _subject;
 
 template <typename SpecClassType>
 class Tsuga {
 public:
+
     static int run(SpecBlock specBlock) {
         Class BaseClass = [CDRSpec class];
         Class UnitClass = [SpecClassType class];
@@ -25,10 +27,20 @@ public:
             specBlock();
         });
         
-        class_addMethod(SpecClass, @selector(declareBehaviors), declareBehaviors, NULL);
+        class_addMethod(SpecClass,
+                        @selector(declareBehaviors),
+                        declareBehaviors,
+                        NULL);
         
         objc_registerClassPair(SpecClass);
-        
         return 0;
     }
 };
+
+static id subject() {
+    return _subject;
+}
+
+static void subject(id subject) {
+    _subject = subject;
+}

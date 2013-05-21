@@ -1,10 +1,10 @@
-# Tsuga
+## Tsuga
 
 [Tsuga](http://en.wikipedia.org/wiki/Tsuga) - set of [Cedar](https://github.com/pivotal/cedar) helpers.
 
-## Features
+### Features
 
-### Spec definition
+#### Spec definition
 
 ```cpp
 CDR_EXT
@@ -14,7 +14,21 @@ Tsuga<Sample>::run(^{
     });
 });
 ```
-### Matchers
+
+#### Subject
+
+```cpp
+subject([User new]);
+            
+it(@"selector", ^{
+    subject() should responds_to(@selector(hello));
+});
+
+it(@"name", ^{
+    subject() should responds_to(@"hello");
+});
+
+```
 
 #### RespondsTo
 

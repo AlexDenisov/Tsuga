@@ -44,6 +44,7 @@
 		CA4C47EC174C05B60012A162 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		CA4C47ED174C05B60012A162 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		CA4C47EF174C0D130012A162 /* UserRunnerSpecSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UserRunnerSpecSpec.mm; sourceTree = "<group>"; };
+		CA4C47F5174C1E7B0012A162 /* Tsuga.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tsuga.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +129,7 @@
 			children = (
 				CA4C47E8174C02630012A162 /* Runner */,
 				CA4C47DB174BFB590012A162 /* Matchers */,
+				CA4C47F5174C1E7B0012A162 /* Tsuga.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";

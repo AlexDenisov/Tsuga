@@ -1,4 +1,4 @@
-#import "TSRespondsTo.h"
+#import "Tsuga.h"
 
 #import "User.h"
 
@@ -39,6 +39,34 @@ describe(@"RespondsTo", ^{
         
         it(@"name", ^{
             subject should responds_to(@"hello");
+        });
+        
+    });
+    
+    context(@"helpers", ^{
+        
+        context(@"class", ^{
+            subject([User class]);
+            
+            it(@"selector", ^{
+                subject() should responds_to(@selector(hello));
+            });
+            
+            it(@"name", ^{
+                subject() should responds_to(@"hello");
+            });
+        });
+        
+        context(@"instance", ^{
+            subject([User new]);
+            
+            it(@"selector", ^{
+                subject() should responds_to(@selector(hello));
+            });
+            
+            it(@"name", ^{
+                subject() should responds_to(@"hello");
+            });
         });
         
     });
