@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Tsuga' target in the 'Tsuga' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <Cedar-iOS/SpecHelper.h>
+#endif

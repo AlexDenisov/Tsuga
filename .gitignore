@@ -1,0 +1,7 @@
+Podfile.lock
+DerivedData
+Tsuga.xcodeproj/xcuserdata
+Tsuga.xcworkspace/xcuserdata
+Pods
+Tsuga.xcodeproj/project.xcworkspace/xcuserdata
+*.DS_Store
