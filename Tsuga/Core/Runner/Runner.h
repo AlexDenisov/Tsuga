@@ -24,7 +24,9 @@ public:
         Class SpecClass = objc_allocateClassPair(BaseClass, [specClassName UTF8String], 0);
         
         IMP declareBehaviors = imp_implementationWithBlock(^{
-            specBlock();
+            describe(specClassName, ^{
+                specBlock();
+            });
         });
         
         class_addMethod(SpecClass,
