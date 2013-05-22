@@ -36,7 +36,7 @@ beforeEach(^{
 });
 
 it(@"smth", ^{
-  ts_should responds_to(@selector(hello));
+  ts_should responds_to(@selector(hello)); // subject() should responds_to(@selector(hello))
 });
 ```
 
