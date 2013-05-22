@@ -8,8 +8,8 @@
 
 #import <objc/runtime.h>
 
-#define ts_should subject(),(ActualValueMarker){__FILE__, __LINE__},false,
-#define ts_should_not subject(),(ActualValueMarker){__FILE__, __LINE__},true,
+#define ts_should subject() should
+#define ts_should_not subject() should
 
 #define CDR_EXT static int _tsuga = 
 
