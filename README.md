@@ -29,6 +29,19 @@ it(@"name", ^{
 });
 
 ```
+#### 'should' shorthand
+
+```cpp
+
+beforeEach(^{
+  subject([User new]);
+});
+
+
+it(@"smth", ^{
+  ts_should responds_to(@selector(hello));
+});
+```
 
 #### RespondsTo
 

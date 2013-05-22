@@ -7,7 +7,16 @@ using namespace Cedar::Doubles;
 
 CDR_EXT
 Tsuga<User>::run(^{
-    it(@"fu", ^{
-        YES should be_truthy;
+    describe(@"t_should", ^{
+        
+        beforeEach(^{
+            subject([User new]);
+        });
+        
+        it(^{
+            ts_should responds_to(@selector(hello));
+        });
+        
     });
+    
 });

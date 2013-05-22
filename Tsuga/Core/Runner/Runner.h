@@ -8,6 +8,9 @@
 
 #import <objc/runtime.h>
 
+#define ts_should subject(),(ActualValueMarker){__FILE__, __LINE__},false,
+#define ts_should_not subject(),(ActualValueMarker){__FILE__, __LINE__},true,
+
 #define CDR_EXT static int _tsuga = 
 
 typedef void (^SpecBlock) ();
@@ -45,4 +48,8 @@ static id subject() {
 
 static void subject(id subject) {
     _subject = subject;
+}
+
+static void it(SpecBlock specBlock) {
+    it(@"", specBlock);
 }
