@@ -19,4 +19,20 @@ Tsuga<User>::run(^{
         
     });
     
+    ts_class(^{
+        
+        it(^{
+            ts_should equal([User class]);
+        });
+        
+    });
+    
+    ts_instance(^{
+        
+        it(^{
+            ts_should be_instance_of([User class]);
+        });
+        
+    });
+    
 });

@@ -37,9 +37,57 @@ beforeEach(^{
   subject([User new]);
 });
 
-
 it(@"smth", ^{
   ts_should responds_to(@selector(hello));
+});
+```
+
+#### Context helpers
+
+```cpp
+ts_class(^{
+        
+    it(@"", ^{
+        ts_should equal([User class]);
+    });
+    
+});
+
+ts_instance(^{
+    
+    it(@"", ^{
+        ts_should be_instance_of([User class]);
+    });
+    
+});
+```
+
+Expands to:
+
+```cpp
+Tsuga<SomeClass>::run
+// ...
+
+context(@"class", ^{
+    beforeEach(^{
+        subject([SomeClass class]);
+    });
+
+    it(@"", ^{
+        ts_should equal([User class]);
+    });
+
+});
+
+context(@"instance", ^{
+    beforeEach(^{
+        subject([SomeClass new]);
+    });
+
+    it(@"", ^{
+        ts_should be_instance_of([User class]);
+    });
+
 });
 ```
 

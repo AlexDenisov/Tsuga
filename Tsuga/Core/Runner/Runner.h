@@ -14,7 +14,9 @@
 #define CDR_EXT static int _tsuga = 
 
 typedef void (^SpecBlock) ();
+
 static id _subject;
+static Class _specClass;
 
 template <typename SpecClassType>
 class Tsuga {
@@ -25,6 +27,8 @@ public:
         Class UnitClass = [SpecClassType class];
         NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
         Class SpecClass = objc_allocateClassPair(BaseClass, [specClassName UTF8String], 0);
+        
+        _specClass = UnitClass;
         
         IMP declareBehaviors = imp_implementationWithBlock(^{
             describe(specClassName, ^{
@@ -52,4 +56,26 @@ static void subject(id subject) {
 
 static void it(SpecBlock specBlock) {
     it(@"", specBlock);
+}
+
+static void ts_class(SpecBlock specBlock) {
+    context(@"class", ^{
+        
+        beforeEach(^{
+            subject(_specClass);
+        });
+        
+        specBlock();
+    });
+}
+
+static void ts_instance(SpecBlock specBlock) {
+    context(@"instance", ^{
+        
+        beforeEach(^{
+            subject([_specClass new]);
+        });
+        
+        specBlock();
+    });
 }
