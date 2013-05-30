@@ -9,7 +9,7 @@
 #import <objc/runtime.h>
 
 #define ts_should subject() should
-#define ts_should_not subject() should
+#define ts_should_not subject() should_not
 
 #define CDR_EXT static int _tsuga = 
 
