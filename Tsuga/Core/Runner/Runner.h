@@ -20,21 +20,17 @@ static Class _specClass;
 
 template <typename SpecClassType>
 class Tsuga {
-public:
-
-    static int run(SpecBlock specBlock) {
-        Class BaseClass = [CDRSpec class];
+    
+    static void runSpec(void (^behaviorBlock)() ) {
         Class UnitClass = [SpecClassType class];
         NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        
+        Class BaseClass = [CDRSpec class];
         Class SpecClass = objc_allocateClassPair(BaseClass, [specClassName UTF8String], 0);
         
         _specClass = UnitClass;
         
-        IMP declareBehaviors = imp_implementationWithBlock(^{
-            describe(specClassName, ^{
-                specBlock();
-            });
-        });
+        IMP declareBehaviors = imp_implementationWithBlock(behaviorBlock);
         
         class_addMethod(SpecClass,
                         @selector(declareBehaviors),
@@ -42,6 +38,43 @@ public:
                         NULL);
         
         objc_registerClassPair(SpecClass);
+    }
+    
+public:
+
+    static int run(SpecBlock specBlock) {
+        Class UnitClass = [SpecClassType class];
+        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        
+        runSpec(^{
+            describe(specClassName, ^{
+                specBlock();
+            });
+        });
+        return 0;
+    }
+    
+    static int xrun(SpecBlock specBlock) {
+        Class UnitClass = [SpecClassType class];
+        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        
+        runSpec(^{
+            xdescribe(specClassName, ^{
+                specBlock();
+            });
+        });
+        return 0;
+    }
+    
+    static int frun(SpecBlock specBlock) {
+        Class UnitClass = [SpecClassType class];
+        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        
+        runSpec(^{
+            fdescribe(specClassName, ^{
+                specBlock();
+            });
+        });
         return 0;
     }
 };
