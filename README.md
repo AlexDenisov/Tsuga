@@ -63,8 +63,6 @@ ts_instance(^{
 Expands to:
 
 ```cpp
-Tsuga<SomeClass>::run
-// ...
 
 context(@"class", ^{
     beforeEach(^{
