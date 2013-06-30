@@ -137,8 +137,8 @@
 		CA4C47DB174BFB590012A162 /* Matchers */ = {
 			isa = PBXGroup;
 			children = (
-				CA4C47DC174BFB7B0012A162 /* TSRespondsTo.h */,
 				CA4C47DD174BFBD00012A162 /* TSConformsTo.h */,
+				CA4C47DC174BFB7B0012A162 /* TSRespondsTo.h */,
 			);
 			path = Matchers;
 			sourceTree = "<group>";

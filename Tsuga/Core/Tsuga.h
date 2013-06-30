@@ -7,5 +7,3 @@
 //
 
 #import "Runner.h"
-#import "TSRespondsTo.h"
-#import "TSConformsTo.h"

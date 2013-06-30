@@ -71,6 +71,26 @@ describe(@"RespondsTo", ^{
         
     });
     
+    context(@"shorthahds", ^{
+        
+        context(@"class", ^{
+            subject([User class]);
+            
+            responds(^{
+                to(@selector(newUser));
+            });
+        });
+        
+        context(@"instance", ^{
+            subject([User new]);
+            
+            responds(^{
+                to(@selector(hello));
+            });
+        });
+        
+    });
+    
 });
 
 SPEC_END

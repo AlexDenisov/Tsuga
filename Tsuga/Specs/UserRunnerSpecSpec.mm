@@ -7,7 +7,7 @@ using namespace Cedar::Doubles;
 
 CDR_EXT
 Tsuga<User>::run(^{
-    describe(@"t_should", ^{
+    describe(@"ts_should", ^{
         
         beforeEach(^{
             subject([User new]);

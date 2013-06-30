@@ -8,6 +8,11 @@
 
 #import <objc/runtime.h>
 
+#import "TSConformsTo.h"
+#import "TSRespondsTo.h"
+
+#pragma once
+
 #define ts_should subject() should
 #define ts_should_not subject() should_not
 
@@ -111,4 +116,22 @@ static void ts_instance(SpecBlock specBlock) {
         
         specBlock();
     });
+}
+
+static void responds(SpecBlock block) {
+    describe(@"responds to", block);
+}
+
+static void conforms(SpecBlock block) {
+    describe(@"conforms to", block);
+}
+
+using namespace Cedar::Matchers;
+
+static void to(Protocol *protocol) {
+    ts_should conforms_to(protocol);
+}
+
+static void to(SEL selector) {
+    ts_should responds_to(selector);
 }

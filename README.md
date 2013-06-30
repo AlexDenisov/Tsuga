@@ -96,9 +96,29 @@ subject should responds_to(@selector(hello));
 subject should responds_to(@"hello");
 ```
 
+##### Shorthand
+
+```cpp
+responds(^{
+    to(@selector(fuu));
+    to(@selector(bar:));
+    to(@selector(bu:zz:));
+});
+```
+
 #### ConformsTo
 
 ```cpp
 subject should conforms_to(@protocol(Conformable));
 subject should conforms_to(@"Conformable");
 ```
+
+##### Shorthand
+
+```cpp
+conforms(^{
+    to(@protocol(UITableViewDelegate));
+    to(@protocol(PrintableObject));
+});
+```
+

@@ -70,6 +70,28 @@ describe(@"ConformsTo", ^{
         
     });
     
+    context(@"shorthands", ^{
+        
+        context(@"class", ^{
+            subject([User class]);
+           
+            conforms(^{
+                to(@protocol(Conformable));
+            });
+            
+        });
+        
+        context(@"instance", ^{
+            subject([User new]);
+            
+            conforms(^{
+                to(@protocol(Conformable));
+            });
+
+        });
+        
+    });
+    
 });
 
 SPEC_END
