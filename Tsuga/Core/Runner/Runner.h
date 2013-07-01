@@ -129,9 +129,13 @@ static void conforms(SpecBlock block) {
 using namespace Cedar::Matchers;
 
 static void to(Protocol *protocol) {
-    ts_should conforms_to(protocol);
+    it(NSStringFromProtocol(protocol), ^{
+        ts_should conforms_to(protocol);
+    });
 }
 
 static void to(SEL selector) {
-    ts_should responds_to(selector);
+    it(NSStringFromSelector(selector), ^{
+        ts_should responds_to(selector);
+    });
 }
