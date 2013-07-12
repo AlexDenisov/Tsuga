@@ -61,22 +61,23 @@ public:
         runSpec(specClassName, ^{
             
             switch (behavior) {
-                case TSSpecBehaviorFocus:
+                case TSSpecBehaviorFocus:{
                     fdescribe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
-                case TSSpecBehaviorSkip:
+                }break;
+                case TSSpecBehaviorSkip:{
                     xdescribe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
-                case TSSpecBehaviorDefault:
-                default:
+                }break;
+                case TSSpecBehaviorDefault:{
+                }
+                default:{
                     describe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
+                }break;
             }
         });
         return 0;
@@ -92,22 +93,23 @@ public:
             });
             
             switch (behavior) {
-                case TSSpecBehaviorFocus:
+                case TSSpecBehaviorFocus:{
                     fdescribe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
-                case TSSpecBehaviorSkip:
+                }break;
+                case TSSpecBehaviorSkip:{
                     xdescribe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
-                case TSSpecBehaviorDefault:
-                default:
+                }break;
+                case TSSpecBehaviorDefault:{
+                }
+                default:{
                     describe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
+                }break;
             }
         });
         return 0;
@@ -123,22 +125,23 @@ public:
             });
             
             switch (behavior) {
-                case TSSpecBehaviorFocus:
+                case TSSpecBehaviorFocus:{
                     fdescribe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
-                case TSSpecBehaviorSkip:
+                }break;
+                case TSSpecBehaviorSkip:{
                     xdescribe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
-                case TSSpecBehaviorDefault:
-                default:
+                }break;
+                case TSSpecBehaviorDefault:{
+                }
+                default:{
                     describe(NSStringFromClass(UnitClass), ^{
                         specBlock();
                     });
-                    break;
+                }break;
             }
         });
         return 0;
