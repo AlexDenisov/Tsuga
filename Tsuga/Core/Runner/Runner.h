@@ -8,10 +8,10 @@
 
 #import <objc/runtime.h>
 
+#pragma once
+
 #import "TSConformsTo.h"
 #import "TSRespondsTo.h"
-
-#pragma once
 
 #define ts_should subject() should
 #define ts_should_not subject() should_not
@@ -20,15 +20,23 @@
 
 typedef void (^SpecBlock) ();
 
+static void subject(id subject);
+
 static id _subject;
 static Class _specClass;
+
+enum TSSpecBehavior {
+    TSSpecBehaviorDefault,
+    TSSpecBehaviorSkip,
+    TSSpecBehaviorFocus
+};
 
 template <typename SpecClassType>
 class Tsuga {
     
-    static void runSpec(void (^behaviorBlock)() ) {
+    static void runSpec(NSString *className, void (^behaviorBlock)() ) {
         Class UnitClass = [SpecClassType class];
-        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", className];
         
         Class BaseClass = [CDRSpec class];
         Class SpecClass = objc_allocateClassPair(BaseClass, [specClassName UTF8String], 0);
@@ -46,42 +54,96 @@ class Tsuga {
     }
     
 public:
-
-    static int run(SpecBlock specBlock) {
+    static int run(SpecBlock specBlock, const TSSpecBehavior behavior = TSSpecBehaviorDefault) {
         Class UnitClass = [SpecClassType class];
-        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        NSString *specClassName = [NSString stringWithFormat:@"%@", NSStringFromClass(UnitClass)];
         
-        runSpec(^{
-            describe(specClassName, ^{
-                specBlock();
-            });
+        runSpec(specClassName, ^{
+            
+            switch (behavior) {
+                case TSSpecBehaviorFocus:
+                    fdescribe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+                case TSSpecBehaviorSkip:
+                    xdescribe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+                case TSSpecBehaviorDefault:
+                default:
+                    describe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+            }
         });
         return 0;
     }
     
-    static int xrun(SpecBlock specBlock) {
+    static int runClass(SpecBlock specBlock, const TSSpecBehavior behavior = TSSpecBehaviorDefault) {
         Class UnitClass = [SpecClassType class];
-        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        NSString *specClassName = [NSString stringWithFormat:@"%@Class", NSStringFromClass(UnitClass)];
         
-        runSpec(^{
-            xdescribe(specClassName, ^{
-                specBlock();
+        runSpec(specClassName, ^{
+            beforeEach(^{
+                subject(_specClass);
             });
+            
+            switch (behavior) {
+                case TSSpecBehaviorFocus:
+                    fdescribe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+                case TSSpecBehaviorSkip:
+                    xdescribe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+                case TSSpecBehaviorDefault:
+                default:
+                    describe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+            }
         });
         return 0;
     }
     
-    static int frun(SpecBlock specBlock) {
+    static int runInstance(SpecBlock specBlock, const TSSpecBehavior behavior = TSSpecBehaviorDefault) {
         Class UnitClass = [SpecClassType class];
-        NSString *specClassName = [NSString stringWithFormat:@"%@Spec", NSStringFromClass(UnitClass)];
+        NSString *specClassName = [NSString stringWithFormat:@"%@Instance", NSStringFromClass(UnitClass)];
         
-        runSpec(^{
-            fdescribe(specClassName, ^{
-                specBlock();
+        runSpec(specClassName, ^{
+            beforeEach(^{
+                subject([_specClass new]);
             });
+            
+            switch (behavior) {
+                case TSSpecBehaviorFocus:
+                    fdescribe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+                case TSSpecBehaviorSkip:
+                    xdescribe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+                case TSSpecBehaviorDefault:
+                default:
+                    describe(NSStringFromClass(UnitClass), ^{
+                        specBlock();
+                    });
+                    break;
+            }
         });
         return 0;
     }
+    
 };
 
 static id subject() {
@@ -89,6 +151,7 @@ static id subject() {
 }
 
 static void subject(id subject) {
+    NSLog(@"%@", subject);
     _subject = subject;
 }
 

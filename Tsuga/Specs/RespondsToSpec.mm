@@ -73,7 +73,7 @@ describe(@"RespondsTo", ^{
     
     context(@"shorthahds", ^{
         
-        context(@"class", ^{
+        fcontext(@"class", ^{
             subject([User class]);
             
             responds(^{
