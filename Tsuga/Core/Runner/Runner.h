@@ -154,7 +154,6 @@ static id subject() {
 }
 
 static void subject(id subject) {
-    NSLog(@"%@", subject);
     _subject = subject;
 }
 
